@@ -21,7 +21,8 @@ def questions_stackoverflow(api_path):
     response = requests.get(API_PATH)
     # Loop all the question
     for data in response.json()["items"]:
-
+        
+        # Filter data : only quesitons without answer
         if data["answer_count"] == 0:
             # By tittle
             print(data["title"])
@@ -43,5 +44,4 @@ def questions_stackoverflow(api_path):
 
 
 if __name__ == "__main__":
-    API_PATH = "https://api.stackexchange.com/2.3/questions?order=desc&sort=activity&site=stackoverflow"
     questions_stackoverflow(API_PATH)
